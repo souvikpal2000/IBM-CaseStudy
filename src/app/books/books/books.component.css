@@ -1,0 +1,13 @@
+img{
+    height: 13rem;
+}
+:host{
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    row-gap: 3rem;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}

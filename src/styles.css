@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Piazzolla:wght@200;300;400;900&display=swap');
+
+:root{
+    --main-bg: #1e272e;
+    --main-color: #0097e6;
+    --book-cover-width: 90px;
+    --book-cover-width-large: 240px;
+    --book-cover-aspect-ratio: 1;
+}

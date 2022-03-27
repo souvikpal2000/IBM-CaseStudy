@@ -1,0 +1,28 @@
+.main-header-left{
+    margin-top: 5rem !important;
+}
+.main-header-left p{
+    font-size: 1.5rem;
+}
+.main-header-left{
+    margin-top: 3rem;
+}
+.main-header-left h1{
+    font-size: 2rem;
+    margin: 1rem 0 3rem 0;
+    text-transform: capitalize;
+}
+.textColor{
+    color: var(--main-color);
+}
+button{
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px #000;
+}
+button:hover{
+    box-shadow: 0 8px 6px -6px var(--main-color);
+}

@@ -1,0 +1,21 @@
+button{
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    box-shadow: 0 8px 6px -6px #000;
+}
+button:hover{
+    box-shadow: 0 8px 6px -6px var(--main-color);
+}
+.errimg img{
+    width: 35rem;
+}
+.error{
+    margin-top: -2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

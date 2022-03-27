@@ -1,0 +1,14 @@
+.navbar{
+    color: white !important;
+    background-color: var(--main-bg);
+    padding: 1rem;
+}
+.navbar a{
+    color: #fff;
+}
+.navbar a:hover{
+    color: var(--main-color);
+}
+.active{
+    color: var(--main-color) !important;
+}
