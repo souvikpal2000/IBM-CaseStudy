@@ -1,0 +1,35 @@
+:host{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-around;
+    align-items: center;
+}
+.box{
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 85%;
+    height: 85%;
+    box-shadow: 0px 0px 12px 5px #000000;
+    border-radius: 0.5rem;
+}
+.card:hover{
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+}
+.plans{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+p{
+    margin: 0;
+}
+.card-body{
+    display: grid;
+    grid-template-rows: auto auto 2.5rem; 
+}

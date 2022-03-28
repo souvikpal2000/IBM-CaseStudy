@@ -1,0 +1,18 @@
+<div class="box" *ngFor="let plan of plans">
+    <div class="card">
+        <div class="card-body">
+            <h5>{{plan.name}}</h5>
+            <div class="plans">
+                <div class="price">
+                    <p>Price</p>
+                    <p class="card-title"><b>{{plan.price}}</b></p>
+                </div>
+                <div class="duration">
+                    <p>Duration</p>
+                    <p class="card-text"><b>{{plan.duration}}</b></p>
+                </div>
+            </div>
+            <a href="#" class="btn btn-primary" routerLink="/login" (click)="setCookie(plan.id)">Buy</a>
+        </div>
+    </div>
+</div>
