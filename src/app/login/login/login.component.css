@@ -15,14 +15,8 @@ button:hover, a:hover{
 .loginForm{
     margin-top: 8rem;
 }
-a{
-    text-decoration: none;
-    color: #000;
-    background-color: rgb(238, 238, 238);
-    margin-right: 1rem;
-}
 .buttons{
     display: flex;
     align-items: center;
-    margin-left: 3rem;
+    justify-content: center;
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
+import { CookieService } from 'ngx-cookie-service';
 
 const routes: Routes = [
   {path: "", component: SignupComponent}

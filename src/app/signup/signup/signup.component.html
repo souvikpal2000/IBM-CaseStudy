@@ -10,19 +10,19 @@
                     <div class=" col-md-8 col-12 alert" role="alert" [ngClass]="alert">
                         {{message}}
                     </div>
-                    <form method="POST" action="/signup" #form = "ngForm" (ngSubmit) = "onClickSubmit(form.value)">
+                    <form method="POST" action="/signup" #form = "ngForm" (ngSubmit) = "onClickSubmit(form)" ngNativeValidate>
                         <div class="form-group row justify-content-center">
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Firstname</span>
-                                    <input type="text" name="firstname" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" ngModel>
+                                    <input type="text" name="firstname" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
                                 </div>
                             </div>
         
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Lastname</span>
-                                    <input type="text" name="lastname" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" ngModel>
+                                    <input type="text" name="lastname" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
                                 </div>		
                             </div>
                         </div>
@@ -31,14 +31,14 @@
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
-                                    <input type="email" name="email" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" ngModel>
+                                    <input type="email" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
                                 </div>
                             </div>
         
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Phone No.</span>
-                                    <input type="text" name="phone" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" ngModel>
+                                    <input type="text" name="phone" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
                                 </div>		
                             </div>
                         </div>
@@ -47,21 +47,45 @@
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                                    <input type="password" name="password" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" ngModel>
+                                    <input type="password" name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
                                 </div>
                             </div>
         
                             <div class="col-12 col-md-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Confirm Password</span>
-                                    <input type="password" name="confirmpassword" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" ngModel>
+                                    <input type="password" name="confirmpassword" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
+                                </div>		
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center">
+                            <!-- <div class="col-12 col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Payment Type</span>
+                                    <select name="payment" id="payment" class="form-control" id="exampleFormControlSelect2" required ngModel >
+                                        <option value="googlepay">Google Pay</option>
+                                        <option value="phonepe">PhonePe</option>
+                                        <option value="amazonpay">Amazon Pay</option>
+                                        <option value="debitcard">Debit Card</option>
+                                        <option value="creditcard">Credit Card</option>
+                                    </select>
+                                </div>
+                            </div> -->
+        
+                            <div class="col-12 col-md-6" class="planid">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Plan Id</span>
+                                    <input type="text" name="planid" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="cookieValue" readonly>
                                 </div>		
                             </div>
                         </div>
 
-                        <div class="form-group button">
+                        <div class="form-group buttons">
                             <div>
-                                <button>SignUp</button>
+                                <a routerLink="/login">Already Logged In</a>
+                            </div>
+                            <div>
+                                <button>Subscribe</button>
                             </div>
                         </div>
                     </form>

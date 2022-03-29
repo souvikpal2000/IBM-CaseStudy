@@ -1,4 +1,4 @@
-<div class="box" *ngFor="let plan of plans">
+<div class="box" *ngFor="let plan of plans" >
     <div class="card">
         <div class="card-body">
             <h5>{{plan.name}}</h5>
@@ -12,7 +12,7 @@
                     <p class="card-text"><b>{{plan.duration}}</b></p>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary" routerLink="/login" (click)="setCookie(plan.id)">Buy</a>
+            <a href="#" class="btn btn-primary" routerLink="/signup" (click)="setCookie(plan.id)">Buy</a>
         </div>
     </div>
 </div>
