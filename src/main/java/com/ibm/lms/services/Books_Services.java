@@ -22,6 +22,7 @@ public class Books_Services {
 	public List<Books> viewAllBooks(){
 		return repo.findAll();
 	}
+	
 	public List<Books> checkBook(Books b){
 		String name = b.getTitle();
 		List<Books> list = repo.check(name);

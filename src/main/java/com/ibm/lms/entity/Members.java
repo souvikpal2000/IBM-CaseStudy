@@ -24,6 +24,9 @@ public class Members {
 	@Column(name="user_role")
 	private String user_role;
 	
+	
+	Subscription_Plan plan;
+	
 	public Members() {}
 
 	public Members(int userid, String password, String firstname, String lastname, String emailid, long mobile,

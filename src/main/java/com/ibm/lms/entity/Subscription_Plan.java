@@ -15,19 +15,70 @@ public class Subscription_Plan {
 	private int duration;
 	@Column(name="price")
 	private float price;
-	
+	@Column(name = "name")
+	private String name;
+
 	public Subscription_Plan() {}
 
-	public Subscription_Plan(int planid, int duration, float price) {
+	
+
+	public Subscription_Plan(int planid, int duration, float price, String name) {
 		super();
 		this.planid = planid;
 		this.duration = duration;
 		this.price = price;
+		this.name = name;
+	}
+
+	public int getPlanid() {
+		return planid;
+	}
+
+
+
+	public void setPlanid(int planid) {
+		this.planid = planid;
+	}
+
+
+
+	public int getDuration() {
+		return duration;
+	}
+
+
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+
+
+	public float getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Subscription_Plan [planid=" + planid + ", duration=" + duration + ", price=" + price + "]";
+		return "Subscription_Plan [planid=" + planid + ", duration=" + duration + ", price=" + price + " name = "+name+"]";
 	}
 	
 	
