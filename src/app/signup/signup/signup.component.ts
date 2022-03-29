@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,10 +14,13 @@ export class SignupComponent implements OnInit {
   alert = '';
   @Input() cookieValue = '';
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, private route:Router) { }
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('planid');
+    if(!this.cookieValue){
+      this.route.navigate(['/plans']);
+    }
     console.log(this.cookieValue);
   }
 
