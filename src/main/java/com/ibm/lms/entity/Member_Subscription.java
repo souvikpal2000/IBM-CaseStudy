@@ -5,7 +5,12 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="member_subscription")
@@ -13,10 +18,16 @@ public class Member_Subscription {
 	@Id
 	@Column(name="subscription_id")
 	private int subscription_id;
-	@Column(name="userid")
-	private int userid;
-	@Column(name="planid")
-	private int planid;
+
+	@OneToOne
+	@JoinColumn(name="userid")
+	Members member;
+
+	@OneToOne
+	@JoinColumn(name="planid")
+	Subscription_Plan subPlan;
+
+
 	@Column(name="date")
 	private Date date;
 	@Column(name="status")
@@ -24,11 +35,11 @@ public class Member_Subscription {
 	
 	public Member_Subscription() {}
 
-	public Member_Subscription(int subscription_id, int userid, int planid, Date date, String status) {
+	public Member_Subscription(int subscription_id, Members member, Subscription_Plan subPlan, Date date, String status) {
 		super();
 		this.subscription_id = subscription_id;
-		this.userid = userid;
-		this.planid = planid;
+		this.member = member;
+		this.subPlan = subPlan;
 		this.date = date;
 		this.status = status;
 	}
@@ -41,20 +52,22 @@ public class Member_Subscription {
 		this.subscription_id = subscription_id;
 	}
 
-	public int getUserid() {
-		return userid;
+	
+
+	public Members getMember() {
+		return member;
 	}
 
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setMember(Members member) {
+		this.member = member;
 	}
 
-	public int getPlanid() {
-		return planid;
+	public Subscription_Plan getSubPlan() {
+		return subPlan;
 	}
 
-	public void setPlanid(int planid) {
-		this.planid = planid;
+	public void setSunPlan(Subscription_Plan subPlan) {
+		this.subPlan = subPlan;
 	}
 
 	public Date getDate() {
@@ -72,12 +85,4 @@ public class Member_Subscription {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	@Override
-	public String toString() {
-		return "Member_Subscription [subscription_id=" + subscription_id + ", userid=" + userid + ", planid=" + planid
-				+ ", date=" + date + ", status=" + status + "]";
-	}
-	
-	
 }

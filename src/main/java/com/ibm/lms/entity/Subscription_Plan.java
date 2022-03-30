@@ -74,12 +74,5 @@ public class Subscription_Plan {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "Subscription_Plan [planid=" + planid + ", duration=" + duration + ", price=" + price + " name = "+name+"]";
-	}
-	
-	
+	}	
 }

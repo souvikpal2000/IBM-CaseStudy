@@ -10,11 +10,11 @@ public class Member_Subscription_Services {
 	@Autowired
 	Member_Subscription_Repo repo;
 	
-	void addMemberSubscription(Member_Subscription msub){
+	public void addMemberSubscription(Member_Subscription msub){
 		repo.save(msub);
 	}
 	
-	void deleteMemberSubscriptionById(int id) {
+	public void deleteMemberSubscriptionById(int id) {
 		repo.deleteById(id);
 	}
 }

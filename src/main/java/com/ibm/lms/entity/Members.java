@@ -23,10 +23,7 @@ public class Members {
 	private long mobile;
 	@Column(name="user_role")
 	private String user_role;
-	
-	
-	Subscription_Plan plan;
-	
+
 	public Members() {}
 
 	public Members(int userid, String password, String firstname, String lastname, String emailid, long mobile,
@@ -95,13 +92,5 @@ public class Members {
 
 	public void setUser_role(String user_role) {
 		this.user_role = user_role;
-	}
-
-	@Override
-	public String toString() {
-		return "Members [userid=" + userid + ", password=" + password + ", firstname=" + firstname + ", lastname="
-				+ lastname + ", emailid=" + emailid + ", mobile=" + mobile + ", user_role=" + user_role + "]";
-	}
-	
-	
+	}	
 }
