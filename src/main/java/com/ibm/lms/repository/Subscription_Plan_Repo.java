@@ -9,4 +9,5 @@ public interface Subscription_Plan_Repo extends JpaRepository<Subscription_Plan,
 	
 //	@Query("UPDATE ")
 //	void updateById(int id);
+
 }

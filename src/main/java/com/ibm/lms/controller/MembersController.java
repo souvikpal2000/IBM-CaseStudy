@@ -22,18 +22,15 @@ public class MembersController {
 	Member_Subscription_Services memberSubServ;
 	
 	@PostMapping("/signup")
-	public HttpStatus addMembers(@RequestBody Member_Subscription m) {
-//		List<Members> list = memberServe.checkMail(m.getEmailid());
-//		if(list.size() == 0) {
-//			memberServe.addMember(m);
-//			//memberSubServ.addMemberSubscription(m);
-//			return "User Added Successfully!!!";
-//		}
-//		else {
-//			return "Email Already Existed!!!";
-//		}
-		memberServe.addMember(m.getMember());
-		memberSubServ.addMemberSubscription(m);
-		return HttpStatus.OK;
+	public String addMembers(@RequestBody Member_Subscription m) {
+		int flag = memberServe.addMember(m.getMember());
+		if(flag == 1) {
+//			m.getMember().setUserid(m.getMember().getEmailid());
+			memberSubServ.addMemberSubscription(m);
+			return "Email Added Successfully";
+		}else {
+			return "Email is Already Registered!!!";
+		}
+		
 	}
 }

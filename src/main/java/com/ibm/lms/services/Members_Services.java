@@ -13,8 +13,17 @@ public class Members_Services {
 	@Autowired
 	Members_Repo repo;
 	
-	public void addMember(Members m) {
-		repo.save(m);
+	public int addMember(Members m) {
+		List<Members> list = this.checkMail(m.getEmailid());
+		if(list.size() != 0) {
+			return 0;
+		}
+		else {
+			m.setUserid(m.getEmailid());
+			m.setUser_role("user");
+			repo.save(m);
+			return 1;
+		}
 	}
 	
 	public void deleteMemberById(int id) {

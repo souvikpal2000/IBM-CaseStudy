@@ -1,16 +1,13 @@
 package com.ibm.lms.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name="member_subscription")
@@ -29,13 +26,13 @@ public class Member_Subscription {
 
 
 	@Column(name="date")
-	private Date date;
+	private LocalDate date;
 	@Column(name="status")
 	private String status;
 	
 	public Member_Subscription() {}
 
-	public Member_Subscription(int subscription_id, Members member, Subscription_Plan subPlan, Date date, String status) {
+	public Member_Subscription(int subscription_id, Members member, Subscription_Plan subPlan, LocalDate date, String status) {
 		super();
 		this.subscription_id = subscription_id;
 		this.member = member;
@@ -70,12 +67,12 @@ public class Member_Subscription {
 		this.subPlan = subPlan;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(LocalDate lastDate) {
+		this.date = lastDate;
 	}
 
 	public String getStatus() {
