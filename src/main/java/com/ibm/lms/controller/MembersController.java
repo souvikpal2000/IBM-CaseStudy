@@ -3,14 +3,19 @@ package com.ibm.lms.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.lms.entity.Member_Subscription;
+import com.ibm.lms.entity.Members;
 import com.ibm.lms.services.Member_Subscription_Services;
 import com.ibm.lms.services.Members_Services;
 @RestController
@@ -31,6 +36,22 @@ public class MembersController {
 		}else {
 			return "Email is Already Registered!!!";
 		}
-		
 	}
+	
+	@PostMapping("/login")
+	public String authMember(@Param("username") String username, @Param("password") String password) {
+		List<Members> list = memberServe.checkMail(username);
+		if(list.size() != 0) {	
+			int flag = memberServe.checkPassword(username, password);
+			if(flag == 1) {
+				memberSubServ.checkActiveOrNot(username);
+				return "You're logged In";
+			}else {
+				return "Incorrect Password";
+			}
+		}else {
+			return "You're not Registered";
+		}
+	}
+
 }

@@ -34,4 +34,15 @@ public class Members_Services {
 		List<Members> list = repo.check(emailid);
 		return list;
 	}
+	
+	public int checkPassword(String username, String password) {
+		
+		List<Members> list = repo.checkPasswordForUsername(username, password);
+		if(list.size() != 0) {
+			return 1;
+		}else {
+			return 0;
+		}
+	} 
+	
 }

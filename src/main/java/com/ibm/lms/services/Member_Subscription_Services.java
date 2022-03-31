@@ -2,6 +2,7 @@ package com.ibm.lms.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.lms.entity.Member_Subscription;
 import com.ibm.lms.entity.Subscription_Plan;
@@ -10,9 +11,11 @@ import com.ibm.lms.repository.Subscription_Plan_Repo;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.text.ParseException;
 import java.util.Date;
+
 
 @Service
 public class Member_Subscription_Services {
@@ -29,15 +32,23 @@ public class Member_Subscription_Services {
 		LocalDate lastDate = date.plusDays(duration);
 	    msub.setDate(lastDate);
 	    msub.setStatus("active");
-//		LocalDate checkDate = repo.checkActive(msub.getMember().getUserid());
-//		long numberOfDays = ChronoUnit.DAYS.between(date, checkDate);
-//		if(numberOfDays > 0) {
-//			msub.setStatus("inactive");
-//		}
 		repo.save(msub);
 	}
 	
 	public void deleteMemberSubscriptionById(int id) {
 		repo.deleteById(id);
+	}
+	
+	@Transactional
+	public void checkActiveOrNot(String userid) {
+		LocalDate date = repo.checkActive(userid);
+		LocalDate curDate = LocalDate.now();
+		//long numberOfDays = ChronoUnit.DAYS.between(curDate, date);
+		Period period = Period.between(curDate, date);
+		if(period.getDays() < 0) {
+			//inactive
+			String status = "inactive";
+			repo.updateStatus(userid, status);
+		}
 	}
 }

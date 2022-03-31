@@ -14,4 +14,8 @@ public interface Members_Repo extends JpaRepository<Members, Integer> {
 	
 	@Query(nativeQuery = true, value="SELECT * FROM members WHERE emailid=:emailid")
 	List<Members> check(String emailid);
+	
+	@Query(nativeQuery = true, value="SELECT * FROM members WHERE userid=:userid and password=:password")
+	List<Members> checkPasswordForUsername(String userid, String password);
+
 }
