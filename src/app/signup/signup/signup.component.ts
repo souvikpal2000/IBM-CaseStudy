@@ -2,6 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import { Member } from 'app/member/member';
+import { SubPlan } from 'app/plans/subplan';
+import { MemberSubscription } from 'app/membersubscription/membersubscription';
+import { SignupServiceService } from '../signup-service.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +18,7 @@ export class SignupComponent implements OnInit {
   alert = '';
   @Input() cookieValue = '';
 
-  constructor(private cookieService: CookieService, private route:Router) { }
+  constructor(private cookieService: CookieService, private route:Router, private signupService: SignupServiceService) { }
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('planid');
@@ -35,12 +39,21 @@ export class SignupComponent implements OnInit {
       form.reset();
     }
     else{
-      console.log(form.value);
+      const memberData = new Member("",form.value.password,form.value.firstname,form.value.lastname, form.value.email, form.value.phone, "");
+      const subPlan = new SubPlan(form.value.planid, 0, 0, "");
+      const memberSubscription = new MemberSubscription(0,memberData,subPlan, 0, "");
+      console.log(memberSubscription);
+
+      // alert(memberSubscription);
+
+      this.signupService.signup(memberSubscription).subscribe();
+
       this.message = "User Registered";
       this.alert = "alert-success";
       this.cookieService.delete("planid");
       form.reset();
     }
+
   }
 }
 

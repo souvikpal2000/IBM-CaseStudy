@@ -19,7 +19,7 @@ img{
 }
 .card:hover{
     box-shadow: 0 0.5rem 1.5rem rgb(10, 9, 9);
-    transform: translateY(-1.25rem);
+    /* transform: translateY(-1.25rem); */
     transition: all 200ms ease-in-out;
 }
 .close{
