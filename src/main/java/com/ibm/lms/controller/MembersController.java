@@ -5,10 +5,12 @@ package com.ibm.lms.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import com.ibm.lms.entity.Member_Subscription;
 import com.ibm.lms.entity.Members;
 import com.ibm.lms.services.Member_Subscription_Services;
 import com.ibm.lms.services.Members_Services;
+@CrossOrigin
 @RestController
 public class MembersController {
 	

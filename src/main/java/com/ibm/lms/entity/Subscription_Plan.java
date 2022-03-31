@@ -31,7 +31,7 @@ public class Subscription_Plan {
 	}
 
 	public int getPlanid() {
-		return planid;
+		return this.planid;
 	}
 
 

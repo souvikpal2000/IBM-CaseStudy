@@ -19,14 +19,14 @@ public class Members {
 	private String lastname;
 	@Column(name="emailid")
 	private String emailid;
-	@Column(name="mobile")
-	private long mobile;
+	@Column(name="phone")
+	private long phone;
 	@Column(name="user_role")
 	private String user_role;
 
 	public Members() {}
 
-	public Members(String userid, String password, String firstname, String lastname, String emailid, long mobile,
+	public Members(String userid, String password, String firstname, String lastname, String emailid, long phone,
 			String user_role) {
 		super();
 		this.userid = userid;
@@ -34,7 +34,7 @@ public class Members {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.emailid = emailid;
-		this.mobile = mobile;
+		this.phone = phone;
 		this.user_role = user_role;
 	}
 
@@ -78,12 +78,12 @@ public class Members {
 		this.emailid = emailid;
 	}
 
-	public long getMobile() {
-		return mobile;
+	public long getPhone() {
+		return phone;
 	}
 
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setPhone(long phone) {
+		this.phone = phone;
 	}
 
 	public String getUser_role() {

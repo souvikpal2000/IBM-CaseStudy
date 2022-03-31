@@ -60,7 +60,7 @@ public class Member_Subscription {
 	}
 
 	public Subscription_Plan getSubPlan() {
-		return subPlan;
+		return this.subPlan;
 	}
 
 	public void setSunPlan(Subscription_Plan subPlan) {
