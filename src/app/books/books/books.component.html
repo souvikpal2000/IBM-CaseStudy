@@ -1,8 +1,8 @@
 <div class="box" *ngFor="let book of books">
     <div class="card">
-        <img [src]="book.url" class="card-img-top" alt="...">
+        <img [src]="book.imageurl" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">{{book.bookTitle}}</h5>
+            <h5 class="card-title">{{book.title}}</h5>
             <p class="card-text">{{book.description}}</p>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">

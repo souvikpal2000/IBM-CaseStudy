@@ -18,10 +18,10 @@
                 <!-- <li class="nav-item">
                     <a class="nav-link" routerLink="/signup" routerLinkActive="active">Signup</a>
                 </li> -->
-                <div *ngIf="cookieValue;then logout else login">here is ignored</div>
+                <div *ngIf="logoutActive;then logout else login">here is ignored</div>
                 <ng-template #logout>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="/" (click) = "onLogout()">Logout</a>
+                        <a class="nav-link" href="/" (click) = "onLogout()">Logout</a>
                     </li>
                 </ng-template>
                 <ng-template #login>

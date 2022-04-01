@@ -8,25 +8,24 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() cookieValue = '';
-  // @Input() loginActive = false;
-  // @Input() logoutActive = false;
+  cookieValue = '';
+  @Input() logoutActive = true;
 
   constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('loggedIn');
-    // if(!this.cookieValue){
-    //   this.loginActive = true;
-    //   this.logoutActive = false;
-    // }else{
-    //   this.loginActive = false;
-    //   this.logoutActive = true;
-    // }
+    if(!this.cookieValue){
+      this.logoutActive = false;
+    }else{
+      this.logoutActive = true;
+    }
   }
 
   onLogout = () => {
     this.cookieService.delete("loggedIn");
+    this.cookieService.delete("status");
+    this.cookieService.delete("planid");
   }
 
 }
