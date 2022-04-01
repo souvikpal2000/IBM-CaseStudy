@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Member } from 'app/member/member';
 import { SubPlan } from 'app/plans/subplan';
 import { MemberSubscription } from 'app/membersubscription/membersubscription';
@@ -46,10 +46,17 @@ export class SignupComponent implements OnInit {
 
       // alert(memberSubscription);
 
-      this.signupService.signup(memberSubscription).subscribe();
-
-      this.message = "User Registered";
-      this.alert = "alert-success";
+      this.signupService.signup(memberSubscription).subscribe((response:any) => {
+        console.log(response);
+        if(response === "This Email is Already Registered!!!"){
+          this.message = response;
+          this.alert = "alert-danger";
+        }
+        else if(response === "User Added Successfully"){
+          this.message = response;
+          this.alert = "alert-success";
+        }
+      });
       this.cookieService.delete("planid");
       form.reset();
     }

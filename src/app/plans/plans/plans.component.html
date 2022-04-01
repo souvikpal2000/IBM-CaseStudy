@@ -5,14 +5,14 @@
             <div class="plans">
                 <div class="price">
                     <p>Price</p>
-                    <p class="card-title"><b>{{plan.price}}</b></p>
+                    <p class="card-title"><b>Rs {{plan.price}}</b></p>
                 </div>
                 <div class="duration">
                     <p>Duration</p>
-                    <p class="card-text"><b>{{plan.duration}}</b></p>
+                    <p class="card-text"><b>{{plan.duration}} days</b></p>
                 </div>
             </div>
-            <a href="#" class="btn btn-primary" routerLink="/signup" (click)="setCookie(plan.id)">Buy</a>
+            <a href="#" class="btn btn-primary" routerLink="/signup" (click)="setCookie(plan.planid)">Buy</a>
         </div>
     </div>
 </div>

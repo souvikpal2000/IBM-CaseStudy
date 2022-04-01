@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginServiceService } from '../login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  message= '';
+  alert= '';
+  @Input() cookieValue = '';
+  loggedIn = false;
+
+  constructor(private loginService: LoginServiceService, private route: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
 
+  onClickSubmit = (form : NgForm) => {
+    console.log(form.value);
+    this.loginService.authentication(form.value.username, form.value.password)
+    .subscribe((response: any) => {
+      console.log(response);
+      if(response === 'Incorrect Password'){
+        this.message = response;
+        this.alert = "alert-danger";
+      }
+      else if(response === "You're not Registered"){
+        this.message = response;
+        this.alert = "alert-warning";
+      }
+      else{
+        this.cookieService.set( 'loggedIn', 'true' );
+        this.loggedIn = true;
+        this.route.navigate(['/books']);
+      }
+    })
+  }
 }

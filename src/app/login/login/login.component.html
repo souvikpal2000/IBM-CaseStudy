@@ -7,14 +7,17 @@
                 </div>
 
                 <div class="col-md-6 col-12 main-header-left loginForm">  
-                    <form method="POST" action="/login">
+                    <div class=" col-md-6 col-12 alert" role="alert" [ngClass]="alert">
+                        {{message}}
+                    </div>
+                    <form method="POST" action="/login" #form="ngForm" (ngSubmit) = "onClickSubmit(form)" ngNativeValidate>
                         <div class="form-group row justify-content-center">
                             <div class="col-12 col-md-10">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Username</span>
                                     </div>
-                                    <input type="text" name="username" id="username" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default" autocomplete="off">
+                                    <input type="text" name="username" id="username" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" autocomplete="off" required ngModel>
                                 </div>
                             </div>
                         </div>
@@ -25,7 +28,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">Password</span>
                                     </div>
-                                    <input type="password" name="password" id="password" class="form-control" aria-label="Sizing example input" required aria-describedby="inputGroup-sizing-default">
+                                    <input type="password" name="password" id="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel>
                                 </div>
                             </div>
                         </div>

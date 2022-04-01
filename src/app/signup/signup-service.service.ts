@@ -11,6 +11,6 @@ export class SignupServiceService {
   constructor(private httpClient: HttpClient) { }
   public signup(memberSubscription: MemberSubscription) : Observable<any>
   {
-    return this.httpClient.post('http://localhost:8089/signup', memberSubscription);
+    return this.httpClient.post('http://localhost:8089/signup', memberSubscription, {responseType: 'text'});
   }
 }

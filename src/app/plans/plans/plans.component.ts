@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
+import { PlansServiceService } from '../plans-service.service';
+import { SubPlan } from '../subplan';
 
 @Component({
   selector: 'app-plans',
@@ -8,31 +10,20 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class PlansComponent implements OnInit {
 
-  constructor(private cookieService: CookieService ) { }
+  plans: SubPlan[]=[]; 
+
+  constructor(private cookieService: CookieService, private planservice: PlansServiceService) { }
 
   ngOnInit(): void {
+    this.getPlans();
   }
 
-  plans = [
-    {
-      id: "1",
-      name: "Beginner's Pack",
-      duration: "15 Days",
-      price: "INR 199"
-    },
-    {
-      id: "2",
-      name: "Starter Pack",
-      duration: "30 Days",
-      price: "INR 399"
-    },
-    {
-      id: "3",
-      name: "Jumbo Pack",
-      duration: "90 Days",
-      price: "INR 699"
-    }
-  ];
+  getPlans = () => {
+    this.planservice.getPlans().subscribe(response => {
+      console.log(response);
+      this.plans = response;
+    })
+  }
 
   setCookie = (id:any) => {
     this.cookieService.set( 'planid', id ); 
