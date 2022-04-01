@@ -35,9 +35,9 @@ public class MembersController {
 		if(flag == 1) {
 //			m.getMember().setUserid(m.getMember().getEmailid());
 			memberSubServ.addMemberSubscription(m);
-			return "Email Added Successfully";
+			return "User Added Successfully";
 		}else {
-			return "Email is Already Registered!!!";
+			return "This Email is Already Registered!!!";
 		}
 	}
 	
@@ -47,8 +47,8 @@ public class MembersController {
 		if(list.size() != 0) {	
 			int flag = memberServe.checkPassword(username, password);
 			if(flag == 1) {
-				memberSubServ.checkActiveOrNot(username);
-				return "You're logged In";
+				String status = memberSubServ.checkActiveOrNot(username);
+				return status;
 			}else {
 				return "Incorrect Password";
 			}

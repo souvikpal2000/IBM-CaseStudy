@@ -15,6 +15,9 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 
 @Service
@@ -40,7 +43,7 @@ public class Member_Subscription_Services {
 	}
 	
 	@Transactional
-	public void checkActiveOrNot(String userid) {
+	public String checkActiveOrNot(String userid) {
 		LocalDate date = repo.checkActive(userid);
 		LocalDate curDate = LocalDate.now();
 		//long numberOfDays = ChronoUnit.DAYS.between(curDate, date);
@@ -49,6 +52,16 @@ public class Member_Subscription_Services {
 			//inactive
 			String status = "inactive";
 			repo.updateStatus(userid, status);
+			return "inactive";
+		}else {
+			return "active";
 		}
 	}
+
+	public String getStatus(String username) {
+		// TODO Auto-generated method stub
+		String status = repo.getStatus(username);
+		return status;
+	}
+	
 }

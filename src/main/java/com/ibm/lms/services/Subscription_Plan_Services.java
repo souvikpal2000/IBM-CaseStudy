@@ -1,5 +1,7 @@
 package com.ibm.lms.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,8 @@ public class Subscription_Plan_Services {
 	void deleteSubscriptionById(int id) {
 		repo.deleteById(id);
 	}
-	
-//	void updateSubscriptionById(int id) {
-//		repo.updateById(id);
-//	}
+
+	public List<Subscription_Plan> getAllPlans() {
+		return repo.findAll();
+	}
 }

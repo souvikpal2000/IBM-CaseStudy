@@ -1,9 +1,11 @@
 package com.ibm.lms.controller;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.lms.entity.Books;
 import com.ibm.lms.services.Books_Services;
+@CrossOrigin
 @RestController
 public class BooksController {
 
@@ -30,7 +33,7 @@ public class BooksController {
 	 
 	}
 	
-	@GetMapping(value = "/getBooks")
+	@GetMapping(value = "/getbooks")
 	public List<Books> getBooks() {
 		return bookServe.viewAllBooks();
 	}

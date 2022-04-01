@@ -21,16 +21,25 @@ public class Books {
 	private int pages;
 	@Column(name="category")
 	private String category;
+	@Column(name="description")
+	private String description;
+	@Column(name="imageurl")
+	private String imageurl;
+	@Column(name="pdfurl")
+	private String pdfurl;
 	
 	public Books(){}
 
-	public Books(int bid, String title, String author, String publisher, int pages, String category) {
+	public Books(int bid, String title, String author, String publisher, int pages, String category, String description, String imageurl, String pdfurl) {
 		this.bid = bid;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.pages = pages;
 		this.category = category;
+		this.description = description;
+		this.imageurl = imageurl;
+		this.pdfurl = pdfurl;
 	}
 
 	public int getBid() {
@@ -80,10 +89,31 @@ public class Books {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
-	@Override
-	public String toString() {
-		return "Books [bid=" + bid + ", title=" + title + ", author=" + author + ", publisher=" + publisher + ", pages="
-				+ pages + ", category=" + category + "]";
+
+	public String getDescription() {
+		return description;
 	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImageurl() {
+		return imageurl;
+	}
+
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
+
+	public String getPdfurl() {
+		return pdfurl;
+	}
+
+	public void setPdfurl(String pdfurl) {
+		this.pdfurl = pdfurl;
+	}
+	
+	
+	
 }
