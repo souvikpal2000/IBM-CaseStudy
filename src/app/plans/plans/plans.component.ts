@@ -13,7 +13,8 @@ export class PlansComponent implements OnInit {
   plans: SubPlan[]=[]; 
   @Input() loggedOut = false;
   @Input() message = '';
-  username = ''
+  username = '';
+
   constructor(private cookieService: CookieService, private planservice: PlansServiceService) { }
 
   ngOnInit(): void {
@@ -34,7 +35,11 @@ export class PlansComponent implements OnInit {
   setCookie = (id:any) => {
     this.cookieService.set( 'planid', id ); 
     if(this.username){
+      this.planservice.getMemberSubscription(this.username, id).subscribe(response => {
+        console.log(response);
+      })
       this.message = "Plan Bought Successfully!!!!";
+      this.cookieService.set( 'status', "active" );
     }
   }
 }

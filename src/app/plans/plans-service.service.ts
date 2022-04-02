@@ -15,4 +15,9 @@ export class PlansServiceService {
   {
     return this.httpClient.get<any>('http://localhost:8089/getplans');
   }
+
+  public getMemberSubscription(username: string, planid: string) : Observable<any>
+  {
+    return this.httpClient.get<any>(`http://localhost:8089/checkstatus/${username}/${planid}`);
+  }
 }
