@@ -58,10 +58,36 @@ public class Member_Subscription_Services {
 		}
 	}
 
-	public String getStatus(String username) {
-		// TODO Auto-generated method stub
-		String status = repo.getStatus(username);
-		return status;
+//	public Member_Subscription getStatus(String username) {
+//		// TODO Auto-generated method stub
+//		Member_Subscription obj = repo.getStatus(username);
+//		return obj;
+//	}
+
+	public void updateStatus(String username, int planid) {
+		Member_Subscription msub = repo.getStatus(username);
+		if(msub.getStatus().equals("inactive")) {
+			Subscription_Plan subPlan = repo1.getById(planid);
+			int duration = subPlan.getDuration();
+			LocalDate date = LocalDate.now();
+			LocalDate lastDate = date.plusDays(duration);
+			msub.setSubscription_id(msub.getSubscription_id());
+			msub.setSunPlan(subPlan);
+		    msub.setDate(lastDate);
+		    msub.setStatus("active");
+		    repo.save(msub);
+		}else {
+			Subscription_Plan subPlan = repo1.getById(planid);
+			int duration = subPlan.getDuration();
+			LocalDate date = msub.getDate();
+			LocalDate lastDate = date.plusDays(duration);
+			msub.setSubscription_id(msub.getSubscription_id());
+			msub.setSunPlan(subPlan);
+			msub.setDate(lastDate);
+			msub.setStatus("active");
+			repo.save(msub);
+		}
+
 	}
 	
 }

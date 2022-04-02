@@ -17,6 +17,6 @@ public interface Member_Subscription_Repo extends JpaRepository<Member_Subscript
 	@Query(nativeQuery = true, value="UPDATE member_subscription SET status=:status WHERE userid=:userid")
 	public void updateStatus(String userid, String status);
 	
-	@Query(nativeQuery=true, value="SELECT status FROM member_subscription WHERE userid=:username")
-	public String getStatus(String username);
+	@Query(nativeQuery=true, value="SELECT * FROM member_subscription WHERE userid=:username")
+	public Member_Subscription getStatus(String username);
 }
