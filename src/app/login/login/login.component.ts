@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginServiceService, private route: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.cookieValue = this.cookieService.get('loggedIn');
+    this.cookieValue = this.cookieService.get('username');
     if(this.cookieValue){
       this.route.navigate(['/books']);
     }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
             this.alert = "alert-warning";
         }
         else{
-            this.cookieService.set( 'loggedIn', 'true' );
+            this.cookieService.set( 'username', username );
             this.cookieService.set( 'status', response );
             this.route.navigate(['/books']).then(() => {
               window.location.reload();

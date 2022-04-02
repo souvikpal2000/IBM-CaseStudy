@@ -1,10 +1,18 @@
 :host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.plans{
+    width: 100%;
     display: grid;
     grid-template-columns: 30% 30% 30%;
     justify-content: space-around;
     align-items: center;
 }
 .box{
+    width: 30%;
     height: 15rem;
     display: flex;
     justify-content: center;
@@ -32,4 +40,7 @@ p{
 .card-body{
     display: grid;
     grid-template-rows: auto auto 2.5rem; 
+}
+.alert{
+    width: 40%;
 }

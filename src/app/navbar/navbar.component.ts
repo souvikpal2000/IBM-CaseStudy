@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.cookieValue = this.cookieService.get('loggedIn');
+    this.cookieValue = this.cookieService.get('username');
     if(!this.cookieValue){
       this.logoutActive = false;
     }else{
@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout = () => {
-    this.cookieService.delete("loggedIn");
+    this.cookieService.delete("username");
     this.cookieService.delete("status");
     this.cookieService.delete("planid");
   }

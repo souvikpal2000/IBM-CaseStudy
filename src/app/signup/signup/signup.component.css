@@ -16,11 +16,6 @@ button, a{
 }
 .signupForm{
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.signupForm{
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;

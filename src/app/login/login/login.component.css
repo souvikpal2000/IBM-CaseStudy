@@ -13,10 +13,19 @@ button:hover, a:hover{
     width: 500px;
 }
 .loginForm{
-    margin-top: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    width: 85% !important;
 }
 .buttons{
     display: flex;
     align-items: center;
     justify-content: center;
 }   
+.alert{
+    width: 70% !important;
+}

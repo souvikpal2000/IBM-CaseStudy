@@ -22,10 +22,10 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('planid');
-    if(!this.cookieValue){
+    if(!this.cookieValue || this.cookieService.get('username')){
       this.route.navigate(['/plans']);
     }
-    console.log(this.cookieValue);
+    // console.log(this.cookieValue);
   }
 
   onClickSubmit = (form: NgForm) => {

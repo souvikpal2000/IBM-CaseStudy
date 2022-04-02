@@ -1,18 +1,30 @@
-<div class="box" *ngFor="let plan of plans" >
-    <div class="card">
-        <div class="card-body">
-            <h5>{{plan.name}}</h5>
-            <div class="plans">
-                <div class="price">
-                    <p>Price</p>
-                    <p class="card-title"><b>Rs {{plan.price}}</b></p>
+<div *ngIf="message" class="alert alert-success" role="alert">
+    {{message}}
+</div>
+<div class="plans">
+    <div class="box" *ngFor="let plan of plans" >
+        <div class="card">
+            <div class="card-body">
+                <h5>{{plan.name}}</h5>
+                <div class="plans">
+                    <div class="price">
+                        <p>Price</p>
+                        <p class="card-title"><b>Rs {{plan.price}}</b></p>
+                    </div>
+                    <div class="duration">
+                        <p>Duration</p>
+                        <p class="card-text"><b>{{plan.duration}} days</b></p>
+                    </div>
                 </div>
-                <div class="duration">
-                    <p>Duration</p>
-                    <p class="card-text"><b>{{plan.duration}} days</b></p>
-                </div>
+                <div *ngIf="loggedOut; then first else second"></div>
+                <ng-template #first>
+                    <a class="btn btn-primary" routerLink="/signup" (click)="setCookie(plan.planid)">Buy</a>
+                </ng-template>
+    
+                <ng-template #second>
+                    <a class="btn btn-primary" (click)="setCookie(plan.planid)">Buy</a>
+                </ng-template>
             </div>
-            <a href="#" class="btn btn-primary" routerLink="/signup" (click)="setCookie(plan.planid)">Buy</a>
         </div>
     </div>
 </div>

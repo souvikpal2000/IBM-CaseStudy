@@ -11,21 +11,30 @@ import { SubPlan } from '../subplan';
 export class PlansComponent implements OnInit {
 
   plans: SubPlan[]=[]; 
-
+  @Input() loggedOut = false;
+  @Input() message = '';
+  username = ''
   constructor(private cookieService: CookieService, private planservice: PlansServiceService) { }
 
   ngOnInit(): void {
+    this.username = this.cookieService.get("username");
+    if(!this.username){
+      this.loggedOut = true;
+    }
     this.getPlans();
   }
 
   getPlans = () => {
     this.planservice.getPlans().subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.plans = response;
     })
   }
 
   setCookie = (id:any) => {
     this.cookieService.set( 'planid', id ); 
+    if(this.username){
+      this.message = "Plan Bought Successfully!!!!";
+    }
   }
 }
