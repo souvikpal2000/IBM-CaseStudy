@@ -30,10 +30,12 @@ export class AddbookComponent implements OnInit {
   }
 
   onClickSubmit = (form: NgForm) => {
-    console.log(form.value);
-    const obj = new Book(0,form.value.title,form.value.author,form.value.publisher,form.value.pages,form.value.category,form.value.description,this.image.name,this.pdf.name);
+    const obj = new Book(0,form.value.title,form.value.author,form.value.publisher,form.value.pages,form.value.category,form.value.description,"assets/books/"+this.image.name,"assets/books/"+this.pdf.name);
+    console.log(obj)
     this.addBookService.postFile(this.image, this.pdf).subscribe();
-    this.addBookService.addBookData(obj).subscribe();
+    this.addBookService.addBookData(obj).subscribe((response) => {
+      alert(response);
+    });
   } 
 
 

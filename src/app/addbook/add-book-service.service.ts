@@ -19,7 +19,7 @@ export class AddBookServiceService {
     return this.httpClient.post<any>(endpoint, formData);
   }
 
-  addBookData(obj:Book){
-    return this.httpClient.post<any>('localhost:8089/addBook', obj);
+  addBookData(obj:Book): Observable<any>{
+    return this.httpClient.post('http://localhost:8089/addbook', obj);
   }
 }
