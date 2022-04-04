@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ibm.lms.entity.Books;
 import com.ibm.lms.services.Books_Services;
+
 @CrossOrigin
 @RestController
 public class BooksController {
@@ -26,7 +27,7 @@ public class BooksController {
 	@Autowired
 	Books_Services bookServe;
 	
-	@PostMapping(value = "/addBook")
+	@PostMapping("/addbook")
 	 public String addBook(@RequestBody Books book) {
 	 List<Books> list = bookServe.checkBook(book);
 	 if(list.size() == 0) {
@@ -43,15 +44,15 @@ public class BooksController {
 		String fileName1 = file1.getOriginalFilename();
 		String fileName2 = file2.getOriginalFilename();
 		try {
-			file1.transferTo( new File("C:\\Users\\sumit\\Documents\\Ibm_final\\Frontend\\IBM-CaseStudy\\src\\assets\\books\\" + fileName1));
-			file2.transferTo( new File("C:\\Users\\sumit\\Documents\\Ibm_final\\Frontend\\IBM-CaseStudy\\src\\assets\\books\\" + fileName2));
+			file1.transferTo( new File("D:\\IBM_CaseStudy\\lms-frontend\\src\\assets\\books\\" + fileName1));
+			file2.transferTo( new File("D:\\IBM_CaseStudy\\lms-frontend\\src\\assets\\books\\" + fileName2));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 		return ResponseEntity.ok("File upload successfully");	
 	}
 	
-	@GetMapping(value = "/getbooks")
+	@GetMapping("/getbooks")
 	public List<Books> getBooks() {
 		return bookServe.viewAllBooks();
 	}
