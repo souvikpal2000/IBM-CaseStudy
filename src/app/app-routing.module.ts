@@ -6,6 +6,7 @@ import { PlansModule } from './plans/plans.module';
 import { LoginModule } from './login/login.module';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { SignupModule } from './signup/signup.module';
+import { AddbookModule } from './addbook/addbook.module';
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch: "full" },  
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "plans", loadChildren: () => PlansModule},
   {path: "signup", loadChildren: () => SignupModule},
   {path: "login", loadChildren: () => LoginModule},
+  {path: "addbook", loadChildren: () => AddbookModule},
   {path: "**", loadChildren: () => PageNotFoundModule}
 ];
 

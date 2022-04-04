@@ -1,0 +1,87 @@
+<div class="container-fluid mainHeader">
+    <div class="row">
+        <div class="col-md-12 col-12 mx-auto">
+            <div class="row">
+                <div class="col-md-6 col-12 main-header-right addBookImg">
+                    <img src="assets/bookImg.jpg" class="img-fluid d-block bookImg" alt="...">
+                </div>
+
+                <div class="col-md-6 col-12 main-header-left signupForm">  
+                    <form method="POST" action="/addbook" #form = "ngForm" (ngSubmit) = "onClickSubmit(form)" ngNativeValidate>
+                        <div class="form-group row justify-content-center">
+                            <div class="col-12 col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+                                    <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required ngModel >
+                                </div>
+                            </div>
+                
+                            <div class="col-12 col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Author</span>
+                                    <input type="text" name="author" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" ngModel >
+                                </div>		
+                            </div>
+                        </div>
+                
+                        <div class="form-group row justify-content-center">
+                            <div class="col-12 col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Publisher</span>
+                                    <input type="text" name="publisher" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" ngModel >
+                                </div>
+                            </div>
+                
+                            <div class="col-12 col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Pages</span>
+                                    <input type="text" name="pages" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" ngModel >
+                                </div>		
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <div class="col-12 col-md-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Category</span>
+                                    <input type="text" name="category" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" ngModel >
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="form-group row justify-content-center">
+                            <div class="col-12 col-md-12">
+                                <label>Description</label>
+                                <div class="input-group mb-3">
+                                    <textarea name="description" class="textarea" required ngModel></textarea>
+                                </div>
+                            </div>
+                        </div>
+                
+                        <div class="form-group row justify-content-center">
+                            <div class="col-12 col-md-6">
+                                <label for="description">Cover Picture</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" type="file" name="imageurl" id="imageurl" (change)="onImageChange($event)" required ngModel>
+                                </div>
+                            </div>
+                
+                            <div class="col-12 col-md-6">
+                                <label>PDF</label>
+                                <div class="input-group mb-3">
+                                    <input class="form-control" type="file" name="pdfurl" id="pdfurl" (change)="onPdfChange($event)" required ngModel >
+                                </div>	
+                            </div>
+                        </div>
+                
+                        <div class="form-group buttons">
+                            <div>
+                                <button>Add Book</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
