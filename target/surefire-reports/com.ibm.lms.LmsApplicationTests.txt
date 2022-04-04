@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.ibm.lms.LmsApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 16.26 s <<< FAILURE! - in com.ibm.lms.LmsApplicationTests
+contextLoads  Time elapsed: 0.033 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: com.ibm.lms.entity.Subscription_Plan, at table: members, for columns: [org.hibernate.mapping.Column(plan)]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not determine type for: com.ibm.lms.entity.Subscription_Plan, at table: members, for columns: [org.hibernate.mapping.Column(plan)]
+Caused by: org.hibernate.MappingException: Could not determine type for: com.ibm.lms.entity.Subscription_Plan, at table: members, for columns: [org.hibernate.mapping.Column(plan)]
+

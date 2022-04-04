@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AddBookServiceService } from '../add-book-service.service';
+import { Book } from '../book';
 
 @Component({
   selector: 'app-addbook',
@@ -30,6 +31,10 @@ export class AddbookComponent implements OnInit {
 
   onClickSubmit = (form: NgForm) => {
     console.log(form.value);
+    const obj = new Book(0,form.value.title,form.value.author,form.value.publisher,form.value.pages,form.value.category,form.value.description,this.image.name,this.pdf.name);
     this.addBookService.postFile(this.image, this.pdf).subscribe();
+    this.addBookService.addBookData(obj).subscribe();
   } 
+
+
 }
