@@ -40,16 +40,28 @@ public class BooksController {
 	}
 	
 	@PostMapping("/upload")
-	public ResponseEntity<?> fileUpload(@RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2){
+	public void fileUpload(@RequestParam("file1") MultipartFile file1,@RequestParam("file2") MultipartFile file2){
 		String fileName1 = file1.getOriginalFilename();
 		String fileName2 = file2.getOriginalFilename();
 		try {
 			file1.transferTo( new File("D:\\IBM_CaseStudy\\lms-frontend\\src\\assets\\books\\" + fileName1));
 			file2.transferTo( new File("D:\\IBM_CaseStudy\\lms-frontend\\src\\assets\\books\\" + fileName2));
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+			//return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
-		return ResponseEntity.ok("File upload successfully");	
+		//return ResponseEntity.ok("File upload successfully");	
+	}
+	
+	@GetMapping("/deletebook/{bid}")
+	public void deleteBook(@PathVariable("bid") int bid) {
+		Optional<Books> book = this.getBooksById(bid);
+		String imageurl = book.get().getImageurl();
+		String pdfurl = book.get().getPdfurl();
+		File file1 = new File("D:\\IBM_CaseStudy\\lms-frontend\\src\\"+imageurl);
+		File file2 = new File("D:\\IBM_CaseStudy\\lms-frontend\\src\\"+pdfurl);
+		file1.delete();
+		file2.delete();
+		bookServe.deleteBookById(bid);
 	}
 	
 	@GetMapping("/getbooks")
@@ -57,7 +69,7 @@ public class BooksController {
 		return bookServe.viewAllBooks();
 	}
 	
-	@GetMapping("/getBooks/{aid}")
+	@GetMapping("/getbook/{aid}")
 	public Optional<Books> getBooksById(@PathVariable("aid") int aid) {
 		return bookServe.viewBookById(aid);
 	}

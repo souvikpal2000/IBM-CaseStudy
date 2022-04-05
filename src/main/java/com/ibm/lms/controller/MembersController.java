@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -55,6 +56,11 @@ public class MembersController {
 		}else {
 			return "You're not Registered";
 		}
+	}
+	
+	@PostMapping("/getrole")
+	public String getMemberRole(@Param("username") String username) {
+		return memberServe.getMember(username).get(0).getUser_role();
 	}
 
 }

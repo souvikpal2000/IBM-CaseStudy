@@ -45,4 +45,9 @@ public class Members_Services {
 		}
 	} 
 	
+	public List<Members> getMember(String username) {
+		List<Members> list = repo.getMemberByUsername(username);
+		return list;
+	}
+	
 }
