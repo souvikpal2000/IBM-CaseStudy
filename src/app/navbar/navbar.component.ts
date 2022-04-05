@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -10,11 +11,13 @@ export class NavbarComponent implements OnInit {
 
   cookieValue = '';
   @Input() logoutActive = true;
+  role = 'user';
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService, private route: Router) { }
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('username');
+    this.role = this.cookieService.get('role');
     if(!this.cookieValue){
       this.logoutActive = false;
     }else{
@@ -26,6 +29,8 @@ export class NavbarComponent implements OnInit {
     this.cookieService.delete("username");
     this.cookieService.delete("status");
     this.cookieService.delete("planid");
+    this.cookieService.delete("role");
   }
+
 
 }

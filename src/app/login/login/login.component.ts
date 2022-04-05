@@ -27,6 +27,10 @@ export class LoginComponent implements OnInit {
   onClickSubmit = (form : NgForm) => {
     console.log(form.value);
     this.authentication(form.value.username, form.value.password);
+    this.loginService.getRole(form.value.username).subscribe((response) => {
+      this.cookieService.set( 'role', response );
+      //console.log(response);
+    })
   }
 
   authentication = (username:string, password: string) => {

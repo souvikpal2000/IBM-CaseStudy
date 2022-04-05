@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { AddBookServiceService } from '../add-book-service.service';
 import { Book } from '../book';
 
@@ -12,11 +14,15 @@ export class AddbookComponent implements OnInit {
 
   image: File = {} as File;
   pdf: File = {} as File;
+  message = '';
+  role = 'user';
 
-  constructor(private addBookService: AddBookServiceService) { }
+  constructor(private addBookService: AddBookServiceService, private cookieService: CookieService, private route: Router) { }
 
   ngOnInit(): void {
-    
+    if(this.cookieService.get("role") !== 'admin'){
+      this.route.navigate(['/home']);
+    }
   }
 
   onImageChange = (event : any) => {
@@ -34,8 +40,9 @@ export class AddbookComponent implements OnInit {
     console.log(obj)
     this.addBookService.postFile(this.image, this.pdf).subscribe();
     this.addBookService.addBookData(obj).subscribe((response) => {
-      alert(response);
+      this.message = response;
     });
+    form.reset();
   } 
 
 

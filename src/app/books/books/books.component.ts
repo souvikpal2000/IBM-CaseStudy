@@ -13,17 +13,19 @@ export class BooksComponent implements OnInit {
   books: Books[]=[];
   cookieValue = '';
   @Input() check = false;
+  role = 'user'
 
   constructor(private cookieService: CookieService,private bookservice: BooksServiceService) { }
 
   ngOnInit(): void {
     this.cookieValue = this.cookieService.get('status');
+    this.role = this.cookieService.get("role");
     if(this.cookieValue === 'active'){
       this.check = true;
     }else{
       this.check = false;
     }
-    console.log(this.check);
+    //console.log(this.check);
     this.getBooks();
   }
 
@@ -31,6 +33,13 @@ export class BooksComponent implements OnInit {
     this.bookservice.getBooks().subscribe(response => {
       // console.log(response);
       this.books = response;
+    })
+  }
+
+  deleteBook = (bid: number) => {
+    console.log(bid);
+    this.bookservice.deleteBook(bid).subscribe(() => {
+      window.location.reload();
     })
   }
 }

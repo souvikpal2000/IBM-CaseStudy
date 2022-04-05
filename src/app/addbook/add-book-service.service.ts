@@ -20,6 +20,6 @@ export class AddBookServiceService {
   }
 
   addBookData(obj:Book): Observable<any>{
-    return this.httpClient.post('http://localhost:8089/addbook', obj);
+    return this.httpClient.post('http://localhost:8089/addbook', obj, {responseType: 'text'});
   }
 }

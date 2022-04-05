@@ -13,4 +13,9 @@ export class BooksServiceService {
   {
     return this.httpClient.get<any>('http://localhost:8089/getbooks');
   }
+
+  public deleteBook(bid: number) : Observable<any>
+  {
+    return this.httpClient.get(`http://localhost:8089/deletebook/${bid}`);
+  }
 }

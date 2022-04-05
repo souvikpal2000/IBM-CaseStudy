@@ -21,4 +21,12 @@ export class LoginServiceService {
     return this.httpClient.post('http://localhost:8089/login', body.toString(), {headers, responseType: 'text'});
   }
 
+  public getRole(username: string): Observable<any>
+  {
+    let body = new URLSearchParams();
+    body.set('username', username);
+    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    return this.httpClient.post('http://localhost:8089/getrole', body.toString(), {headers, responseType: 'text'});
+  }
+
 }
