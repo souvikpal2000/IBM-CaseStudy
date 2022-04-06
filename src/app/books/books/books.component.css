@@ -1,7 +1,7 @@
 img{
     height: 13rem;
 }
-:host{
+.books{
     display: grid;
     grid-template-columns: 20% 20% 20%;
     row-gap: 3rem;
@@ -31,4 +31,13 @@ img{
     flex-direction: row;
     grid-template-columns: auto auto;
     grid-column-gap: 1rem;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.search{
+    width: 35% !important;
 }

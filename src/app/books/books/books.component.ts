@@ -13,7 +13,8 @@ export class BooksComponent implements OnInit {
   books: Books[]=[];
   cookieValue = '';
   @Input() check = false;
-  role = 'user'
+  role = 'user';
+  query = '';
 
   constructor(private cookieService: CookieService,private bookservice: BooksServiceService) { }
 
@@ -41,5 +42,9 @@ export class BooksComponent implements OnInit {
     this.bookservice.deleteBook(bid).subscribe(() => {
       window.location.reload();
     })
+  }
+
+  onChangeInput = (value: Event) => {
+    this.query = (value.target as HTMLInputElement).value;
   }
 }
